@@ -1,0 +1,55 @@
+/*
+ * Copyright (C) 2021 StatiXOS
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package vendor.google.wireless_charger@1.0;
+
+enum DockType : uint8_t {
+    DESKTOP_DOCK = 0,
+    DESKTOP_PAD = 1,
+    AUTOMOBILE_DOCK = 2,
+    AUTOMOBILE_PAD = 3,
+    PHONE = 4,
+    UNKNOWN = 15,
+};
+
+struct FirmwareVersion {
+    uint32_t major;
+    uint32_t minor;
+    string extra;
+};
+
+enum Orientation : uint8_t {
+    ARBITRARY = 0,
+    LANDSCAPE,
+    PORTRAIT,
+    BOTH,
+};
+
+struct DockInfo {
+    bool isGetInfoSupported;
+    string manufacturer;
+    uint32_t maxFwSize;
+    string model;
+    Orientation orientation;
+    string serial;
+    DockType type;
+    FirmwareVersion version;
+};
+
+struct KeyExchangeResponse {
+    uint8_t dockId;
+    vec<uint8_t> dockPublicKey;
+};
