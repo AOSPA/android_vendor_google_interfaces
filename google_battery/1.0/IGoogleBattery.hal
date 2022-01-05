@@ -17,5 +17,6 @@
 package vendor.google.google_battery@1.0;
 
 interface IGoogleBattery {
-    getChargingStageAndDeadline() generates (int8_t b, string str, int32_t i);
+    getChargingStageAndDeadline() generates (int8_t result, string stage, int32_t seconds);
+    setChargingDeadline(int32_t deadline) generates (int8_t result);
 };
